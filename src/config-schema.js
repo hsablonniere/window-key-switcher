@@ -13,15 +13,11 @@ export const ConfigSchema = z.object({
     visualIndicator: z.union([
       z.literal(false),
       z.object({
-        duration: z.number().positive().optional().default(150),
-        opacity: z.number().min(0).max(1).optional().default(0.15),
-        color: z.string().optional().default('30, 64, 175'),
-      })
-    ]).optional().default({
-      duration: 150,
-      opacity: 0.15,
-      color: '30, 64, 175'
-    }),
-    quickSwitchTimeout: z.number().positive().optional().default(2000),
-  }).optional(),
+        duration: z.number().positive(),
+        opacity: z.number().min(0).max(1),
+        color: z.string(),
+      }),
+    ]),
+    quickSwitchTimeout: z.number().positive(),
+  }),
 });

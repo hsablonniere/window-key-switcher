@@ -33,7 +33,7 @@ export default class WindowKeySwitcherExtension extends Extension {
    */
   disable () {
     this.#hotkeyManager?.stop();
-    this.#windowManager?.destroy();
+    this.#windowManager?.cleanup();
   }
 
   async start () {

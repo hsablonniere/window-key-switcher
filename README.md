@@ -1,12 +1,13 @@
 # Window Key Switcher
 
-A GNOME Shell extension for intelligent hotkey-based window switching and application launching.
+A GNOME Shell extension for hotkey-based window switching.
 
 > **⚠️ Alpha Status**: This extension is currently in alpha phase and not yet available through the official GNOME Extensions website. Manual installation is required.
 
 ## Features
 
-- **Smart Window Switching**: Press `Super+1` through `Super+0` to switch between applications
+- **Window Switching**: Press `Super+1` through `Super+0` to switch between your favourite applications
+- **Application Launching**: If no window exist for an application, the app is launched and focused
 - **Intelligent Cycling**: Quickly press the same hotkey multiple times to cycle through all windows of an application
 - **Force Launch**: Use `Super+Alt+1` through `Super+Alt+0` to always launch a new instance
 - **Workspace Aware**: Only manages windows on the current workspace
@@ -69,12 +70,12 @@ Create a configuration file at `~/.config/window-key-switcher/config.json`:
   - **name**: Display name for the application
   - **wmClass**: Window class name (find using `xprop WM_CLASS` command)
   - **launcher**: Desktop file name (usually found in `/usr/share/applications/`)
-- **settings**: Optional settings for customizing behavior
+- **settings**: Settings for customizing behavior
   - **visualIndicator**: Visual feedback configuration (set to `false` to disable, or an object to customize)
-    - **duration**: How long the overlay displays in milliseconds (default: `150`)
-    - **opacity**: Transparency of the overlay, 0-1 range (default: `0.15`)
-    - **color**: RGB color values as a string (default: `"30, 64, 175"` - dark blue)
-  - **quickSwitchTimeout**: Time window for quick successive presses in milliseconds (default: `2000`)
+    - **duration**: How long the overlay displays in milliseconds
+    - **opacity**: Transparency of the overlay, 0-1 range
+    - **color**: RGB color values as a string
+  - **quickSwitchTimeout**: Time window for quick successive presses in milliseconds
 
 ### Configuration Examples
 
@@ -83,18 +84,6 @@ To completely disable the visual indicator:
 {
   "settings": {
     "visualIndicator": false
-  }
-}
-```
-
-To customize only the color and opacity:
-```json
-{
-  "settings": {
-    "visualIndicator": {
-      "color": "255, 0, 0",
-      "opacity": 0.3
-    }
   }
 }
 ```
