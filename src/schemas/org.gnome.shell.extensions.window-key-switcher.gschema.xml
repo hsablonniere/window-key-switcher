@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+    <schema id="org.gnome.shell.extensions.window-key-switcher" path="/org/gnome/shell/extensions/window-key-switcher/">
+
+        <!-- Launch or focus shortcuts - Super with numbers 1-9, then 0 -->
+
+        <key name="window-key-switcher-1" type="as">
+            <default><![CDATA[['<Super>1']]]></default>
+            <summary>Window key switcher - slot 1</summary>
+            <description>Hotkey to launch/focus application in slot 1</description>
+        </key>
+
+        <key name="window-key-switcher-2" type="as">
+            <default><![CDATA[['<Super>2']]]></default>
+            <summary>Window key switcher - slot 2</summary>
+            <description>Hotkey to launch/focus application in slot 2</description>
+        </key>
+
+        <key name="window-key-switcher-3" type="as">
+            <default><![CDATA[['<Super>3']]]></default>
+            <summary>Window key switcher - slot 3</summary>
+            <description>Hotkey to launch/focus application in slot 3</description>
+        </key>
+
+        <key name="window-key-switcher-4" type="as">
+            <default><![CDATA[['<Super>4']]]></default>
+            <summary>Window key switcher - slot 4</summary>
+            <description>Hotkey to launch/focus application in slot 4</description>
+        </key>
+
+        <key name="window-key-switcher-5" type="as">
+            <default><![CDATA[['<Super>5']]]></default>
+            <summary>Window key switcher - slot 5</summary>
+            <description>Hotkey to launch/focus application in slot 5</description>
+        </key>
+
+        <key name="window-key-switcher-6" type="as">
+            <default><![CDATA[['<Super>6']]]></default>
+            <summary>Window key switcher - slot 6</summary>
+            <description>Hotkey to launch/focus application in slot 6</description>
+        </key>
+
+        <key name="window-key-switcher-7" type="as">
+            <default><![CDATA[['<Super>7']]]></default>
+            <summary>Window key switcher - slot 7</summary>
+            <description>Hotkey to launch/focus application in slot 7</description>
+        </key>
+
+        <key name="window-key-switcher-8" type="as">
+            <default><![CDATA[['<Super>8']]]></default>
+            <summary>Window key switcher - slot 8</summary>
+            <description>Hotkey to launch/focus application in slot 8</description>
+        </key>
+
+        <key name="window-key-switcher-9" type="as">
+            <default><![CDATA[['<Super>9']]]></default>
+            <summary>Window key switcher - slot 9</summary>
+            <description>Hotkey to launch/focus application in slot 9</description>
+        </key>
+
+        <key name="window-key-switcher-0" type="as">
+            <default><![CDATA[['<Super>0']]]></default>
+            <summary>Window key switcher - slot 0</summary>
+            <description>Hotkey to launch/focus application in slot 0</description>
+        </key>
+
+        <!-- Launch or focus shortcuts - Super+Alt with numbers 1-9, then 0 -->
+
+        <key name="window-key-switcher-1-force" type="as">
+            <default><![CDATA[['<Super><Alt>1']]]></default>
+            <summary>Window key switcher - force launch slot 1</summary>
+            <description>Hotkey to force launch application in slot 1</description>
+        </key>
+
+        <key name="window-key-switcher-2-force" type="as">
+            <default><![CDATA[['<Super><Alt>2']]]></default>
+            <summary>Window key switcher - force launch slot 2</summary>
+            <description>Hotkey to force launch application in slot 2</description>
+        </key>
+
+        <key name="window-key-switcher-3-force" type="as">
+            <default><![CDATA[['<Super><Alt>3']]]></default>
+            <summary>Window key switcher - force launch slot 3</summary>
+            <description>Hotkey to force launch application in slot 3</description>
+        </key>
+
+        <key name="window-key-switcher-4-force" type="as">
+            <default><![CDATA[['<Super><Alt>4']]]></default>
+            <summary>Window key switcher - force launch slot 4</summary>
+            <description>Hotkey to force launch application in slot 4</description>
+        </key>
+
+        <key name="window-key-switcher-5-force" type="as">
+            <default><![CDATA[['<Super><Alt>5']]]></default>
+            <summary>Window key switcher - force launch slot 5</summary>
+            <description>Hotkey to force launch application in slot 5</description>
+        </key>
+
+        <key name="window-key-switcher-6-force" type="as">
+            <default><![CDATA[['<Super><Alt>6']]]></default>
+            <summary>Window key switcher - force launch slot 6</summary>
+            <description>Hotkey to force launch application in slot 6</description>
+        </key>
+
+        <key name="window-key-switcher-7-force" type="as">
+            <default><![CDATA[['<Super><Alt>7']]]></default>
+            <summary>Window key switcher - force launch slot 7</summary>
+            <description>Hotkey to force launch application in slot 7</description>
+        </key>
+
+        <key name="window-key-switcher-8-force" type="as">
+            <default><![CDATA[['<Super><Alt>8']]]></default>
+            <summary>Window key switcher - force launch slot 8</summary>
+            <description>Hotkey to force launch application in slot 8</description>
+        </key>
+
+        <key name="window-key-switcher-9-force" type="as">
+            <default><![CDATA[['<Super><Alt>9']]]></default>
+            <summary>Window key switcher - force launch slot 9</summary>
+            <description>Hotkey to force launch application in slot 9</description>
+        </key>
+
+        <key name="window-key-switcher-0-force" type="as">
+            <default><![CDATA[['<Super><Alt>0']]]></default>
+            <summary>Window key switcher - force launch slot 0</summary>
+            <description>Hotkey to force launch application in slot 0</description>
+        </key>
+
+    </schema>
+</schemalist>

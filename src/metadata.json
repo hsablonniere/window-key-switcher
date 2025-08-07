@@ -1,0 +1,8 @@
+{
+  "uuid": "window-key-switcher@hsablonniere.com",
+  "name": "Window Key Switcher",
+  "description": "Hotkey-based window switching for specific applications with intelligent focus management",
+  "shell-version": ["48"],
+  "version": 1,
+  "settings-schema": "org.gnome.shell.extensions.window-key-switcher"
+}

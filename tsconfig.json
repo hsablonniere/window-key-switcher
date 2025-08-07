@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "checkJs": true,
+    "noEmit": true,
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "strict": true,
+    "strictNullChecks": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    // I would like to set this to false
+    // But https://github.com/gjsify/gnome-shell is packaged in a way I get lots of duplicated types
+    "skipLibCheck": true,
+    "lib": ["ES2024"],
+    "useUnknownInCatchVariables": false,
+    "types": [
+      "@girs/gjs/dom",
+      "@girs/meta-16",
+      "@girs/shell-16",
+      "@girs/gnome-shell/ambient"
+    ]
+  },
+  "include": ["src"]
+}

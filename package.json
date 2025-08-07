@@ -1,0 +1,35 @@
+{
+  "name": "window-key-switcher",
+  "version": "0.0.1",
+  "description": "A simple tool to switch between windows using keyboard shortcuts",
+  "type": "module",
+  "author": "hsablonniere",
+  "license": "MIT",
+  "scripts": {
+    "ext:build": "node tasks/build-extension.js",
+    "ext:enable": "node tasks/enable-extension.js",
+    "ext:install": "node tasks/install-extension.js",
+    "ext:logs": "node tasks/logs.js",
+    "ext:package": "node tasks/package-extension.js",
+    "ext:reload": "npm run ext:build && npm run ext:package && npm run ext:install",
+    "format": "prettier . --write",
+    "format:check": "prettier . --check",
+    "typecheck": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "zod": "4.0.15"
+  },
+  "devDependencies": {
+    "@girs/gjs": "4.0.0-beta.25",
+    "@girs/gnome-shell": "48.0.2",
+    "@girs/meta-16": "16.0.0-4.0.0-beta.25",
+    "@girs/shell-16": "16.0.0-4.0.0-beta.25",
+    "esbuild": "0.25.8",
+    "prettier": "3.6.2",
+    "prettier-plugin-organize-imports": "4.2.0",
+    "typescript": "5.9.2"
+  },
+  "volta": {
+    "node": "22.18.0"
+  }
+}
