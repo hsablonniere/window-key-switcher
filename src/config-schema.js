@@ -10,12 +10,18 @@ export const ConfigSchema = z.object({
     }),
   ),
   settings: z.object({
-    // Visual indicator settings
-    visualIndicatorEnabled: z.boolean().optional().default(true),
-    visualIndicatorDuration: z.number().positive().optional().default(150),
-    visualIndicatorOpacity: z.number().min(0).max(1).optional().default(0.15),
-    
-    // Window cycling settings
+    visualIndicator: z.union([
+      z.literal(false),
+      z.object({
+        duration: z.number().positive().optional().default(150),
+        opacity: z.number().min(0).max(1).optional().default(0.15),
+        color: z.string().optional().default('30, 64, 175'),
+      })
+    ]).optional().default({
+      duration: 150,
+      opacity: 0.15,
+      color: '30, 64, 175'
+    }),
     quickSwitchTimeout: z.number().positive().optional().default(2000),
-  }).optional().default({}),
+  }).optional(),
 });

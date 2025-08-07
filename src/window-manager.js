@@ -1,7 +1,7 @@
 import Meta from 'gi://Meta';
 import Shell from 'gi://Shell';
 import { logger } from './logger.js';
-import { VisualIndicator } from './visual-indicator.js';
+import { WindowDecorator } from './window-decorator.js';
 
 const WINDOW_WAIT_TIMEOUT_MS = 5_000;
 
@@ -18,7 +18,7 @@ export class WindowManager {
   #lastFocusedWindowIds = new Map();
   /** @type {Map<string, number>} */
   #currentCycleIndex = new Map();
-  /** @type {VisualIndicator} */
+  /** @type {WindowDecorator} */
   #visualIndicator;
   /** @type {number} */
   #quickSwitchTimeout;
@@ -29,14 +29,31 @@ export class WindowManager {
   constructor(config) {
     this.#config = config;
     this.#quickSwitchTimeout = config.settings?.quickSwitchTimeout ?? 2000;
-    
+
     // Pass visual indicator settings to the VisualIndicator
-    const visualSettings = {
-      enabled: config.settings?.visualIndicatorEnabled ?? true,
-      duration: config.settings?.visualIndicatorDuration ?? 150,
-      opacity: config.settings?.visualIndicatorOpacity ?? 0.15,
-    };
-    this.#visualIndicator = new VisualIndicator(visualSettings);
+    const visualIndicator = config.settings?.visualIndicator;
+    let visualSettings;
+
+    if (visualIndicator === false) {
+      visualSettings = { enabled: false };
+    } else if (visualIndicator && typeof visualIndicator === 'object') {
+      visualSettings = {
+        enabled: true,
+        duration: visualIndicator.duration ?? 150,
+        opacity: visualIndicator.opacity ?? 0.15,
+        color: visualIndicator.color ?? '30, 64, 175',
+      };
+    } else {
+      // Default settings
+      visualSettings = {
+        enabled: true,
+        duration: 150,
+        opacity: 0.15,
+        color: '30, 64, 175',
+      };
+    }
+
+    this.#visualIndicator = new WindowDecorator(visualSettings);
   }
 
   /**
@@ -166,7 +183,7 @@ export class WindowManager {
     logger.log(`Focus window ${window.get_wm_class()}`);
     const timestamp = Shell.Global.get().get_current_time();
     window.activate(timestamp);
-    
+
     // Show the spotlight effect
     this.#visualIndicator.show(window);
   }

@@ -53,9 +53,11 @@ Create a configuration file at `~/.config/window-key-switcher/config.json`:
     }
   },
   "settings": {
-    "visualIndicatorEnabled": true,
-    "visualIndicatorDuration": 150,
-    "visualIndicatorOpacity": 0.15,
+    "visualIndicator": {
+      "duration": 150,
+      "opacity": 0.15,
+      "color": "30, 64, 175"
+    },
     "quickSwitchTimeout": 2000
   }
 }
@@ -68,10 +70,34 @@ Create a configuration file at `~/.config/window-key-switcher/config.json`:
   - **wmClass**: Window class name (find using `xprop WM_CLASS` command)
   - **launcher**: Desktop file name (usually found in `/usr/share/applications/`)
 - **settings**: Optional settings for customizing behavior
-  - **visualIndicatorEnabled**: Enable/disable the blue overlay when focusing windows (default: `true`)
-  - **visualIndicatorDuration**: How long the overlay displays in milliseconds (default: `150`)
-  - **visualIndicatorOpacity**: Transparency of the overlay, 0-1 range (default: `0.15`)
+  - **visualIndicator**: Visual feedback configuration (set to `false` to disable, or an object to customize)
+    - **duration**: How long the overlay displays in milliseconds (default: `150`)
+    - **opacity**: Transparency of the overlay, 0-1 range (default: `0.15`)
+    - **color**: RGB color values as a string (default: `"30, 64, 175"` - dark blue)
   - **quickSwitchTimeout**: Time window for quick successive presses in milliseconds (default: `2000`)
+
+### Configuration Examples
+
+To completely disable the visual indicator:
+```json
+{
+  "settings": {
+    "visualIndicator": false
+  }
+}
+```
+
+To customize only the color and opacity:
+```json
+{
+  "settings": {
+    "visualIndicator": {
+      "color": "255, 0, 0",
+      "opacity": 0.3
+    }
+  }
+}
+```
 
 ### Finding Window Class Names
 

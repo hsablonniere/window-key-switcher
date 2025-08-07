@@ -1,17 +1,14 @@
-import Clutter from 'gi://Clutter';
 import Shell from 'gi://Shell';
 import St from 'gi://St';
 import { logger } from './logger.js';
 
-const FADE_TIME = 50; // Quick fade
-
 /**
  * Creates a blue overlay on top of the focused window
  */
-export class VisualIndicator {
+export class WindowDecorator {
   /** @type {St.Widget|null} */
   #overlay = null;
-  /** @type {number|null} */
+  /** @type {any|null} */
   #timeoutId = null;
   /** @type {boolean} */
   #enabled;
@@ -19,17 +16,21 @@ export class VisualIndicator {
   #duration;
   /** @type {number} */
   #opacity;
-  
+  /** @type {string} */
+  #color;
+
   /**
    * @param {object} settings - Visual indicator settings
    * @param {boolean} settings.enabled - Whether the indicator is enabled
    * @param {number} settings.duration - Display duration in milliseconds
    * @param {number} settings.opacity - Opacity level (0-1)
+   * @param {string} settings.color - RGB color values (e.g., '30, 64, 175')
    */
-  constructor(settings = {}) {
+  constructor(settings) {
     this.#enabled = settings.enabled ?? true;
     this.#duration = settings.duration ?? 150;
     this.#opacity = settings.opacity ?? 0.15;
+    this.#color = settings.color ?? '30, 64, 175';
   }
 
   /**
@@ -41,21 +42,21 @@ export class VisualIndicator {
     if (!this.#enabled) {
       return;
     }
-    
+
     logger.log(`Showing blue overlay for window ${window.get_wm_class()}`);
-    
+
     // Cancel any existing effect
     this.hide();
-    
+
     // Get window frame rectangle (includes decorations and is monitor-aware)
     const frameRect = window.get_frame_rect();
     if (!frameRect) {
       logger.log('Could not get window frame rectangle');
       return;
     }
-    
-    // Create the blue overlay that covers the entire window
-    const overlayColor = `rgba(30, 64, 175, ${this.#opacity})`;
+
+    // Create the overlay that covers the entire window
+    const overlayColor = `rgba(${this.#color}, ${this.#opacity})`;
     this.#overlay = new St.Widget({
       name: 'window-indicator-overlay',
       reactive: false,
@@ -67,19 +68,11 @@ export class VisualIndicator {
       width: frameRect.width,
       height: frameRect.height,
     });
-    
+
     // Add the overlay to the window group
     const windowGroup = Shell.Global.get().window_group;
     windowGroup.add_child(this.#overlay);
-    
-    // Quick fade in
-    this.#overlay.opacity = 0;
-    this.#overlay.ease({
-      opacity: 255,
-      duration: FADE_TIME,
-      mode: Clutter.AnimationMode.EASE_OUT_QUAD,
-    });
-    
+
     // Set up timeout to auto-hide
     this.#timeoutId = setTimeout(() => {
       this.hide();
@@ -95,20 +88,11 @@ export class VisualIndicator {
       clearTimeout(this.#timeoutId);
       this.#timeoutId = null;
     }
-    
+
     // Remove overlay
     if (this.#overlay) {
-      this.#overlay.ease({
-        opacity: 0,
-        duration: FADE_TIME,
-        mode: Clutter.AnimationMode.EASE_OUT_QUAD,
-        onComplete: () => {
-          if (this.#overlay) {
-            this.#overlay.destroy();
-            this.#overlay = null;
-          }
-        },
-      });
+      this.#overlay.destroy();
+      this.#overlay = null;
     }
   }
 
